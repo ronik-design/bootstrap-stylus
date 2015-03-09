@@ -82,6 +82,10 @@ small,
 .small
   font-size floor((100% * $font-size-small / $font-size-base))
 
+// Undo browser default styling
+cite
+  font-style normal
+
 mark,
 .mark
   background-color $state-warning-bg
@@ -178,13 +182,13 @@ ol
 // List options
 
 // Unstyled keeps list items block level, just removes default browser padding and list-style
-.list-inline,
 .list-unstyled
   padding-left 0
   list-style none
 
 // Inline turns list items into inline-block
 .list-inline
+  @extend .list-unstyled
   margin-left -5px
 
   > li
@@ -288,6 +292,11 @@ blockquote.pull-right
       content ''
     &:after
       content '\00A0 \2014' // nbsp, em dash
+
+// Quotes
+blockquote:before,
+blockquote:after
+  content ""
 
 // Addresses
 address
